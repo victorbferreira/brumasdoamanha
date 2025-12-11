@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento Anual dos Programas – Órgãos Municipais</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --primary: #2d9b9b;
+            --primary-dark: #1b7a7a;
+            --accent: #bdd630;
+            --accent-light: #d4e36f;
+            --bg-light: #f0f9f9;
+            --bg-white: #ffffff;
+            --text-dark: #2d3436;
+            --text-muted: #636e72;
+            --border: #d0e8e8;
+            --success: #27ae60;
+            --error: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-image: url('data:image/jpeg;base64,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ZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJkyZMmTJk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');
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f0f9f9;
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2d9b9b 0%, #1b7a7a 100%);
+            color: white;
+            padding: 2rem 2rem 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .header-logo {
+            max-width: 200px;
+            height: auto;
+            margin: 0 auto 1.5rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+        }
+
+        .header h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-content {
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-number {
+            background: var(--accent);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .section-description {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .section-description strong {
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        label .required {
+            color: var(--error);
+            margin-left: 0.25rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 77, 46, 0.1);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232d3436' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .activities-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .activity-item {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .activity-item h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .activity-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .activity-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #2d9b9b 0%, #1b7a7a 100%);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 2rem;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(26, 77, 46, 0.3);
+        }
+
+        .btn-submit:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: #1565c0;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-text {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .intro-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Estilos para navegação entre abas */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: space-between;
+        }
+
+        .btn-nav {
+            padding: 0.875rem 2rem;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Work Sans', sans-serif;
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 77, 46, 0.2);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-nav.btn-next {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-nav.btn-next:hover:not(:disabled) {
+            background: var(--primary-dark);
+        }
+
+        .progress-bar {
+            background: var(--border);
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            height: 100%;
+            transition: width 0.4s ease;
+            border-radius: 4px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .current-step {
+            font-weight: 600;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="data:image/png;base64,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" alt="Prefeitura de Brumadinho" class="header-logo">
+            <h1>Planejamento da Gestão</h1>
+            <p>Brumas do Amanhã | 2025-2028</p>
+        </div>
+
+        <div class="form-content">
+            <div class="intro-text" id="introText">
+                <p>Estamos encerrando o primeiro ano da gestão Gabriel Parreiras e Aline Braga.</p>
+                <p>Avaliar e planejar são dois lados da mesma moeda.</p>
+                <p>Esse questionário tem o objetivo de auxiliar na sistematização do planejamento de cada secretaria de forma que esteja documentado.</p>
+            </div>
+
+            <div class="info-box" id="infoBox">
+                <strong>📋 Instruções:</strong>
+                Preencha todas as informações solicitadas. Navegue entre as abas usando os botões "Anterior" e "Próximo".
+            </div>
+
+            <!-- Barra de progresso -->
+            <div class="progress-info">
+                <span class="current-step">Etapa <span id="currentStepNum">1</span> de <span id="totalSteps">1</span></span>
+                <span id="stepTitle">Identificação</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+
+            <div class="alert" id="alert"></div>
+            
+            <form id="mainForm">
+                <!-- ABA 1: IDENTIFICAÇÃO -->
+                <div class="tab-content active" data-tab="0">
+                    <div class="section">
+                        <h2 class="section-title">
+                            <span class="section-number">1</span>
+                            Identificação
+                        </h2>
+                        
+                        <div class="form-group">
+                            <label for="orgao">
+                                Selecione o órgão responsável
+                                <span class="required">*</span>
+                            </label>
+                            <select id="orgao" name="orgao" required>
+                                <option value="">-- Selecione um órgão --</option>
+                                <option value="02001 - PROCURADORIA GERAL">02001 - PROCURADORIA GERAL</option>
+                                <option value="02005 - SECRETARIA MUNICIPAL DE EDUCAÇÃO">02005 - SECRETARIA MUNICIPAL DE EDUCAÇÃO</option>
+                                <option value="02006 - SECRETARIA MUNICIPAL DE SAÚDE">02006 - SECRETARIA MUNICIPAL DE SAÚDE</option>
+                                <option value="02009 - SECRETARIA MUNICIPAL DE MEIO AMBIENTE">02009 - SECRETARIA MUNICIPAL DE MEIO AMBIENTE</option>
+                                <option value="02010 - SECRETARIA MUNICIPAL DE DESENVOLVIMENTO SOCIAL">02010 - SECRETARIA MUNICIPAL DE DESENVOLVIMENTO SOCIAL</option>
+                                <option value="02014 - CONTROLADORIA INTERNA">02014 - CONTROLADORIA INTERNA</option>
+                                <option value="02015 - SECRETARIA MUNICIPAL DE ADMINISTRAÇÃO">02015 - SECRETARIA MUNICIPAL DE ADMINISTRAÇÃO</option>
+                                <option value="02016 - SECRETARIA MUNICIPAL DE PLANEJAMENTO E GESTÃO">02016 - SECRETARIA MUNICIPAL DE PLANEJAMENTO E GESTÃO</option>
+                                <option value="02017 - SECRETARIA MUNICIPAL DE FAZENDA">02017 - SECRETARIA MUNICIPAL DE FAZENDA</option>
+                                <option value="02019 - SECRETARIA MUNICIPAL DE GOVERNO E REPARAÇÃO">02019 - SECRETARIA MUNICIPAL DE GOVERNO E REPARAÇÃO</option>
+                                <option value="02021 - SECRETARIA MUNICIPAL DE ESPORTES, EVENTOS E LAZER">02021 - SECRETARIA MUNICIPAL DE ESPORTES, EVENTOS E LAZER</option>
+                                <option value="02022 - SECRETARIA MUNICIPAL DE CULTURA E TURISMO">02022 - SECRETARIA MUNICIPAL DE CULTURA E TURISMO</option>
+                                <option value="02023 - SECRETARIA MUNICIPAL DE OBRAS E SERVIÇOS URBANOS">02023 - SECRETARIA MUNICIPAL DE OBRAS E SERVIÇOS URBANOS</option>
+                                <option value="02024 - SECRETARIA MUNICIPAL DE DESENVOLVIMENTO ECONÔMICO">02024 - SECRETARIA MUNICIPAL DE DESENVOLVIMENTO ECONÔMICO</option>
+                                <option value="02025 - SECRETARIA MUNICIPAL DE AGRICULTURA PECUÁRIA E ABASTECIMENTO">02025 - SECRETARIA MUNICIPAL DE AGRICULTURA PECUÁRIA E ABASTECIMENTO</option>
+                                <option value="02026 - BRUMADINHO ATIVOS S/A">02026 - BRUMADINHO ATIVOS S/A</option>
+                                <option value="02027 - SECRETARIA MUNICIPAL DE SEGURANÇA PÚBLICA">02027 - SECRETARIA MUNICIPAL DE SEGURANÇA PÚBLICA</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="responsavel">
+                                Nome do responsável pelo envio
+                                <span class="required">*</span>
+                            </label>
+                            <input type="text" id="responsavel" name="responsavel" required placeholder="Digite o nome completo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">
+                                E-mail do responsável
+                                <span class="required">*</span>
+                            </label>
+                            <input type="email" id="email" name="email" required placeholder="exemplo@prefeitura.gov.br">
+                        </div>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn-nav btn-prev" disabled>
+                            ← Anterior
+                        </button>
+                        <button type="button" class="btn-nav btn-next" id="firstNext">
+                            Próximo →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ABAS DE PROGRAMAS (serão geradas dinamicamente) -->
+                <div id="programTabs"></div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Enviando dados para o Google Sheets...</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // DADOS DOS PROGRAMAS POR ÓRGÃO
+        // NOTA: Dados carregados do arquivo JSON oficial
+        const programasData = {
+    "02001 - PROCURADORIA GERAL": [
+        {
+            "nome": "0004 - DEFESA  E PROTEÇÃO DA ORDEM JURIDICA",
+            "acoes": [
+                "2.017 - MANUTENÇÃO E AMPLIAÇÃO DAS ATIVIDADES DA PGM",
+                "2.018 - PRECATÓRIOS E SENTENÇAS JUDICIAIS - GERAL",
+                "2.182 - AMPLIAÇÃO E MANUTENÇÃO DO ACERVO DA BIBLIOTECA JURÍDICA",
+                "2.183 -  PARTICIPAÇÃO EM CURSOS, CONGRESSOS, SEMINÁRIOS E SIMPÓSIOS "
+            ]
+        },
+        {
+            "nome": "0057 - SERVIÇO DA DÍVIDA DECORRENTE DE SENTENÇA JUDICIAL ",
+            "acoes": [
+                "3.003 - SERVIÇO DA DÍVIDA DECORRENTE DE SENTENÇA JUDICIAL",
+                "3.004 - DIVIDA TRABALHISTA - FGTS"
+            ]
+        }
+    ],
+    "02005 - SECRETARIA MUNICIPAL DE EDUCAÇÃO": [
+        {
+            "nome": "0006 - GESTÃO DA POLITICA EDUCACIONAL",
+            "acoes": [
+                "1137 - Eleições para Diretores Escolares",
+                "2.020 - MANUTENÇÃO DAS ATIVIDADES DA SECRETARIA MUNICIPAL DE EDUCAÇÃO ",
+                "2.021 - CONTRIBUIÇÃO À UNDIME"
+            ]
+        },
+        {
+            "nome": "0007 - MANUTENÇÃO E DESENVOLVIMENTO DO ENSINO FUNDAMENTAL",
+            "acoes": [
+                "1.010 - CONSTRUÇÃO, AMPLIAÇÃO E REFORMA DE EQUIPAMENTOS PÚBLICOS DO ENSINO FUNDAMENTAL",
+                "1.012 - AQUISIÇÃO DE EQUIPAMENTOS PARA O ENSINO FUNDAMENTAL",
+                "2.024 - MANUTENÇÃO DAS ATIVIDADES DO ENSINO FUNDAMENTAL"
+            ]
+        },
+        {
+            "nome": "0008 - MANUTENÇÃO E DESENVOLVIMENTO DA EDUCAÇÃO INFANTIL",
+            "acoes": [
+                "1.027 - CONSTRUÇÃO AMPLIAÇÃO E REFORMA DE EQUIPAMENTOS PÚBLICOS PARA A EDUCAÇÃO INFANTIL",
+                "1.089 - AQUISIÇÃO DE EQUIPAMENTOS PARA A EDUCAÇÃO INFANTIL",
+                "1139 - Escola em Tempo Integral",
+                "1163 - Mais Creches",
+                "2.032 - MANUTENÇÃO DAS ATIVIDADES DA EDUCAÇÃO INFANTIL"
+            ]
+        },
+        {
+            "nome": "0009 - MANUTENÇÃO E DESENVOLVIMENTO DO ENSINO SUPLETIVO E EDUCAÇÃO DE JOVENS E ADULTOS",
+            "acoes": [
+                "1136 - Educação para a Cidadania Digital",
+                "1191 - Promoção do Ensino Técnico",
+                "2.033 - MANUTENÇÃO DAS ATIVIDADES DA EDUCAÇÃO DE JOVENS E ADULTOS"
+            ]
+        },
+        {
+            "nome": "0033 - ALIMENTAÇÃO ESCOLAR ",
+            "acoes": [
+                "2.028 - ALIMENTAÇÃO ESCOLAR DO ENSINO FUNDAMENTAL",
+                "2.209 - ALIMENTAÇÃO ESCOLAR DA EDUCAÇÃO INFANTIL",
+                "2.210 - ALIMENTAÇÃO ESCOLAR DA EDUCAÇÃO DE JOVENS E ADULTOS"
+            ]
+        },
+        {
+            "nome": "0034 - TRANSPORTE ESCOLAR",
+            "acoes": [
+                "1.014 - AQUISIÇÃO DE VEICULOS PARA O TRANSPORTE ESCOLAR",
+                "1192 - Proposta Integrada para Transporte Escolar",
+                "2.025 - DISPONIBILIZAÇÃO DE TRANSPORTE ESCOLAR PARA OS ALUNOS DO ENSINO FUNDAMENTAL",
+                "2.211 - DISPONIBILIZAÇÃO DE TRANSPORTE ESCOLAR PARA OS ALUNOS DA EDUCAÇÃO INFANTIL"
+            ]
+        },
+        {
+            "nome": "0035 - EDUCAÇÃO ESPECIAL/INCLUSIVA ",
+            "acoes": [
+                "2.023 - PARCERIA COM A APAE - ESCOLA MARIA DÁRIA DE LIMA",
+                "2.188 - MANUTENÇÃO DO CENTRO MUNICIPAL DE APOIO À EDUCAÇÃO ESPECIAL  "
+            ]
+        },
+        {
+            "nome": "0082 - BRUMAS EDUCA",
+            "acoes": [
+                "1113 - Biblioteca Municipal",
+                "1138 - Empreendedorismo e Educação Financeira nas Escolas",
+                "1140 - Escolas Parque"
+            ]
+        }
+    ],
+    "02006 - SECRETARIA MUNICIPAL DE SAÚDE": [
+        {
+            "nome": "0012 - ATENDIMENTO BÁSICO DA SAÚDE",
+            "acoes": [
+                "1110 - Ampliação do Número de Agentes Comunitários de Saúde e de Endemias",
+                "2.049 - MANUTENÇÃO DE ATIVIDADES DE VIGILÂNCIA EM SAÚDE",
+                "2.083 - GESTÃO ADMINISTRATIVA FINANCEIRA E PATRIMONIAL ",
+                "2.219 - MANUTENÇÃO DE ATIVIDADES DE VIGILÂNCIA EPIDEMIOLÓGICA",
+                "2.226 - MANUTENÇÃO DAS ATIVIDADES PSICOSOCIAIS"
+            ]
+        },
+        {
+            "nome": "0031 - ATENÇÃO BÁSICA E VARIÁVEL DE SAÚDE",
+            "acoes": [
+                "1189 - Programa Saúde Integral: Ampliação e Fortalecimento da Atenção Básica",
+                "1.024 - CONSTRUÇÃO E IMPLEMENTAÇÃO DO HOSPITAL MUNICIPAL",
+                "1.072 - CONSTRUÇÃO, REFORMA E ADEQUAÇÃO DA ATENÇÃO BÁSICA",
+                "2.043 - JUDICIALIZAÇÃO ATENÇÃO BÁSICA",
+                "2.095 - DESPESAS COM JUDICIALIZAÇÕES DE MEDICAMENTOS",
+                "2.096 - MANUTENÇÃO DAS ATIVIDADES DE ASSITÊNCIA FARMACÊUTICA",
+                "2.101 - MANUTENÇÃO DAS ATIVIDADES DA ATENÇÃO BÁSICA "
+            ]
+        },
+        {
+            "nome": "0032 - ATENDIMENTO MÉDIA E ALTA COMPLEXIDADE",
+            "acoes": [
+                "1130 - Criação do Sistema de Atendimento às Crianças Autistas",
+                "1184 - Programa Integrado de Atendimento e Resposta em Urgência e Emergência",
+                "1186 - Programa Integrado de Saúde Mental e Práticas Complementares",
+                "1205 - Upinha na UPA – Espaço Infantojuvenil Humanizado",
+                "1.091 - CONSTRUÇÃO E IMPLEMENTAÇÃO NA REDE DE MÉDIA E ALTA COMPLEXIDADE",
+                "1.092 - CONSTRUÇÃO E IMPLEMENTAÇÃO NA VIGILÂNCIA EM SAÚDE",
+                "2.042 - JUDICIALIZAÇÃO MEDIA E ALTA COMPLEXIDADE",
+                "2.044 - MANUTENÇÃO DOS SERVIÇOS DE NUTRIÇÃO E ALIMENTAÇÃO ",
+                "2.045 - MANUTENÇÃO DAS ATIVIDADES DE MÉDIA E ALTA COMPLEXIDADE",
+                "2.100 - MANUTENÇÃO DOS SERVIÇOS DE TRANSPORTE DE DOENTES",
+                "2.218 - PARTICIPAÇÃO EM CONSÓRCIO PÚBLICO",
+                "2.222 - MANUTENÇÃO DAS ATIVIDADES DE MÉDIA E ALTA COMPLEXIDADE - VALE"
+            ]
+        },
+        {
+            "nome": "0067 - GESTÃO ADMINISTRATIVA DOS SERVIÇOS DA SAÚDE",
+            "acoes": [
+                "2.251 - GESTÃO ADMINISTRATIVA DA SECRETARIA MUNICIPAL DE SAÚDE",
+                "2.252 - PARTICIPAÇÃO EM CONSÓRCIO PÚBLICO"
+            ]
+        },
+        {
+            "nome": "0069 - FORTALECIMENTO INSTITUCIONAL",
+            "acoes": [
+                "1185 - Programa Integrado de Regulação e Modernização da Saúde Pública",
+                "1206 - Valorização dos profissionais da saúde"
+            ]
+        },
+        {
+            "nome": "0085 - FARMÁCIA POPULAR",
+            "acoes": [
+                "1111 - Ampliar a Lista de Medicamentos Gratuitos",
+                "1188 - Programa Remédio em Casa"
+            ]
+        },
+        {
+            "nome": "0088 - SAÚDE EM TODO LUGAR",
+            "acoes": [
+                "1195 - Realização de Mutirões de Saúde",
+                "1200 - Saúde Integral nas Escolas",
+                "1203 - Teleconsultas e Telemonitoramento"
+            ]
+        },
+        {
+            "nome": "0013 - GESTÃO DOS SERVIÇOS DE SAÚDE",
+            "acoes": [
+                "1.071 - IMPLANTAÇÃO E REFORMA DO FUNDO MUNICIPAL DE SAÚDE",
+                "2.040 - MANUTENÇÃO DO CONSELHO MUNICIPAL DE SAUDE "
+            ]
+        },
+        {
+            "nome": "0060 - AÇÕES EMERGENCIAIS - VALE",
+            "acoes": [
+                "2.220 - EXECUÇÃO TERMO PACTUAÇÃO DE ATOS - VALE",
+                "2.221 - EXECUÇÃO DEMANDAS REPRIMIDAS - VALE"
+            ]
+        }
+    ],
+    "02009 - SECRETARIA MUNICIPAL DE MEIO AMBIENTE": [
+        {
+            "nome": "0014 - GESTÃO DE RESÍDUOS",
+            "acoes": [
+                "2.092 - MANUTENÇÃO DO VIVEIRO MUNICIPAL",
+                "2.094 - GERENCIAMENTO DE RESÍDUOS SÓLIDOS"
+            ]
+        },
+        {
+            "nome": "0044 - INFRAESTRUTURA E URBANIDADE",
+            "acoes": [
+                "2.058 - MANUTENÇÃO REVITALIZAÇÃO E CONSERVAÇÃO DE PRAÇAS PARQUES E JARDINS"
+            ]
+        },
+        {
+            "nome": "0046 - GESTÃO AMBIENTAL",
+            "acoes": [
+                "1.009 - OPERACIONALIZAÇÃO DE PROJETOS DE NATUREZA SOCIOAMBIENTAL",
+                "2.065 - GESTÃO AMBIENTAL",
+                "2.090 - SELEÇÃO DE PROJETOS CONTRA INCÊNCIOS - SOCIEDADE CIVIL",
+                "2.091 - PROTEÇÃO, RECUPERAÇÃO E MONITORAMENTO DE NASCENTES",
+                "2.113 - CONTRIBUIÇÃO A AMIG - ASSOCIAÇÃO DOS MUNICÍPIOS MINERADORES DE MG",
+                "2.136 - MANUTENÇÃO DA SECRETARIA DE MEIO AMBIENTE E DESENVOLVIMENTO SUSTENTÁVEL"
+            ]
+        },
+        {
+            "nome": "0053 - REGULARIZAÇÃO AMBIENTAL",
+            "acoes": [
+                "2.180 - ARBORIZAÇÃO DE ÁREAS VERDES E UNIDADES DE CONSERVAÇÃO",
+                "2.181 - PLANO MUNICIPAL DE CONSERVAÇÃO DE MATA ATLÂNTICA"
+            ]
+        },
+        {
+            "nome": "0059 - BRUMAS MAIS BONITA",
+            "acoes": [
+                "1177 - Plano Municipal de Arborização"
+            ]
+        },
+        {
+            "nome": "0070 - GESTÃO DOS RECURSOS HÍDRICOS",
+            "acoes": [
+                "1181 - Programa de Mapeamento e Preservação de Nascentes",
+                "1187 - Programa Lagoa Viva"
+            ]
+        },
+        {
+            "nome": "0075 - PROJETOS AMBIENTAIS",
+            "acoes": [
+                "1109 - Ampliação da coleta seletiva",
+                "1135 - Educação Ambiental"
+            ]
+        },
+        {
+            "nome": "0086 - PROTEÇÃO E BEM-ESTAR ANIMAL",
+            "acoes": [
+                "1193 - Proteção e Bem-Estar Animal"
+            ]
+        }
+    ],
+    "02010 - SECRETARIA MUNICIPAL DE DESENVOLVIMENTO SOCIAL": [
+        {
+            "nome": "0017 - POLÍTICA MUNICIPAL DE ASSISTÊNCIA SOCIAL - PMAS",
+            "acoes": [
+                "1.100 - RESPOSTAS AS AÇOES DE JUDICIALIZAÇÃO SOCIOASSISTENCIAL",
+                "2.026 - GESTÃO DA SECRETARIA MUNICIPAL DE DESENVOLVIMENTO SOCIAL",
+                "2.264 - OPERACIONALIZAÇÃO DO DEPARTAMENTO DE PATRIMONIO E LOGISTICA DA SMDS"
+            ]
+        },
+        {
+            "nome": "0018 - CIDADANIA EMPREGO E RENDA",
+            "acoes": [
+                "2.030 - OPERACIONALIZAÇÃO DO SISTEMA NACIONAL DE EMPREGO - SINE"
+            ]
+        },
+        {
+            "nome": "0019 - DIREITOS HUMANOS E CIDADANIA",
+            "acoes": [
+                "1120 - Brumas Diversa",
+                "2.031 - PROMOÇÃO, PROTEÇÃO E DEFESA DOS DIREITOS DA CRIANÇA, DO ADOLESCENTE E DE SUAS FAMÍLIAS",
+                "2.232 - MANUTENÇÃO  ADMINISTRATIVA E PREDIAL DA CASA DOS CONSELHOS DAS POLÍTICAS SOCIAIS DE BRUMADINHO"
+            ]
+        },
+        {
+            "nome": "0020 - BLOCO DE GESTÃO DO PROGRAMA BOLSA FAMILIA E CADASTRO UNICO",
+            "acoes": [
+                "2.274 - GESTÃO E OPERACIONALIZAÇÃO - CADUNICO E TRANSFERENCIA DE RENDA"
+            ]
+        },
+        {
+            "nome": "0021 - BLOCO DA GESTÃO DO SUAS",
+            "acoes": [
+                "1147 - Fortalecimento dos Conselhos de Assistência Social",
+                "2.272 - GESTÃO E OPERACIONALIZAÇÃO DO  PEP / VSA / ORÇAMENTO E FINANCEIRO E NORMAS E REGULAMENTAÇÃO",
+                "2.273 - GERENCIAS DE PROTEÇÃO SOCIAL"
+            ]
+        },
+        {
+            "nome": "0022 - BLOCO DA PROTEÇÃO SOCIAL BÁSICA",
+            "acoes": [
+                "2.072 - EXECUÇÃO DOS BENEFÍCIOS CESTA BASICA/ AUXÍLIOS  MORADIA / NATALIDADE E FUNERAL",
+                "2.078 - EXECUÇÃO DAS ATIVIDADES PACTUADAS INERENTES AO CUMPRIMENTO DO PROGRAMA BPC NAS ESCOLAS",
+                "2.245 - OPRACIONALIZAÇÃO E EXECUÇÃO DO PROGRAMA PRIMEIRA INFANCIA NO SUAS CRIANÇA FELIZ",
+                "2.275 - OPERACIONALIZAÇÃO EXECUÇÃO E MANUTENÇÃO - CRAS / PAIF / SCFV"
+            ]
+        },
+        {
+            "nome": "0023 - PROTEÇÃO SOCIAL ESPECIAL DE MÉDIA COMPLEXIDADE - PSE/MC",
+            "acoes": [
+                "2.277 - OPERACIONALIZAÇÃO EXECUÇÃO E MANUTENÇÃO - CREAS / PAEFI / MSE (LA/PSC) SEAS / CENTRO-DIA"
+            ]
+        },
+        {
+            "nome": "0024 - PROTEÇÃO SOCIAL ESPECIAL DE ALTA COMPLEXIDADE - PSE/AC",
+            "acoes": [
+                "1122 - Centro de Bem-Estar da Pessoa Idosa",
+                "2.121 - OPERACIONALIZAÇÃO DE ACOLHIMENTO INSTITUCIONAL A CRIANCAS, ADOLECENTES, IDOSOS E PCDS",
+                "2.130 - EXECUÇÃO DO SERVIÇO DE PROTEÇÃO E ATENDIMENTO ESPECIALIZADO EM CALAMIDADE CRASEC/PAEC"
+            ]
+        },
+        {
+            "nome": "0025 - ATIVIDADES SOCIOEDUCACIONAIS VOLTADAS ÀS CRIANÇAS E/OU AOS ADOLESCENTES",
+            "acoes": [
+                "2.155 - SERVIÇO SÓCIOEDUCATIVO, CULTURAL E ESPORTIVO,VOLTADOS AO ATENDIMENTO DE CRIANÇAS E/OU ADOLESCENTES"
+            ]
+        },
+        {
+            "nome": "0027 - HABITAÇÃO DE INTERESSE SOCIAL",
+            "acoes": [
+                "1154 - Implementação de Programas Habitacionais",
+                "2.253 - PROGRAMAS PROJ. E AÇOES PARA O ENFRENTAMENTO DO DEFICIT HABITACIONAL DE INTERESSE SOCIAL"
+            ]
+        },
+        {
+            "nome": "0028 - PROMOÇÃO, PROTEÇÃO E DEFESA DOS DIREITOS DAS PESSOAS COM DEFICIÊNCIA",
+            "acoes": [
+                "2.255 - PROGRAMAS PROJ. E AÇOES SOCIOASSISTENCIAIS CULT. E ESP. VOLTADOS AO ATEND. DA PESSOA C/ DEFICIENCIA"
+            ]
+        },
+        {
+            "nome": "0029 - ATIVIDADES SOCIOASSISTENCIAIS VOLTADAS ÀS PESSOAS IDOSAS",
+            "acoes": [
+                "2.254 - PROGRAMAS PROJ. E AÇOES SOCIOASSISTENCIAIS CULT. E ESP. VOLTADOS AO ATEND. DO PUBLICO IDOSO"
+            ]
+        },
+        {
+            "nome": "0030 - PROMOÇÃO, PROTEÇÃO E DEFESA  DOS DIREITOS DA JUVENTUDE",
+            "acoes": [
+                "1131 - Cursos Preparatórios Pré-ENEM e Pré-Vestibular",
+                "1160 - Juventude Brumas\n"
+            ]
+        },
+        {
+            "nome": "0062 - PROGRAMAS SOCIAIS DE INCENTIVO",
+            "acoes": [
+                "2.268 - EXECUÇÃO DO PROGRAMA TRANSPORTA SONHOS TEMPORARIO E CONDICIONAL",
+                "2.269 - EXECUÇÃO DO PROGRAMA AÇAO SOCIAL INTINERANTE",
+                "2.270 - EXECUÇÃO DO PROGRAMA CONEXÃO SOCIAL",
+                "2.271 - EXECUÇÃO DO PROGRAMA REFORMA QUE TRANSFORMA",
+                "2.276 - EXECUÇÃO DO PROGRAMA INOVA SOCIAL"
+            ]
+        }
+    ],
+    "02014 - CONTROLADORIA INTERNA": [
+        {
+            "nome": "0042 - SISTEMA DE CONTROLE INTERNO",
+            "acoes": [
+                "2.019 - CONTRIBUIÇÕES ABO/MG",
+                "2.057 - PROMOÇÃO DA TRANSPARÊNCIA",
+                "2.089 -  MANUTENÇÃO DA OUVIDORIA E DO E-SIC ",
+                "2.102 - MANUTENÇÃO DAS ATIVIDADES DO ÓRGÃO CENTRAL DE CONTROLE INTERNO",
+                "2.203 -  MANUTENÇÃO DAS ATIVIDADES DE AUDITORIA",
+                "2.204 -  MANUTENÇÃO DA CORREGEDORIA MUNICIPAL",
+                "2.215 - CONTRIBUIÇÃO AO CONSELHO NACIONAL DE CONTROLE INTERNO - CONACI"
+            ]
+        },
+        {
+            "nome": "0080 - TRANSPARÊNCIA E CONTROLE SOCIAL",
+            "acoes": [
+                "1150 - Governança de Dados",
+                "1170 - Monitoramento e Avaliação das Políticas Públicas",
+                "1194 - Quem Não Mede, Não Gerencia"
+            ]
+        }
+    ],
+    "02015 - SECRETARIA MUNICIPAL DE ADMINISTRAÇÃO": [
+        {
+            "nome": "0005 - DESENVOLVIMENTO DOS SERVIÇOS ADMINISTRATIVOS",
+            "acoes": [
+                "2.104 - MANUTENÇÃO DOS SERVIÇOS ADMINISTRATIVOS",
+                "2.105 - CONTRIBUIÇÃO A  ASSOCIAÇÃO MINEIRA DE MUNICÍPIOS - AMM",
+                "2.108 - CONTRIBUIÇÃO A CONFEDERAÇÃO NACIONAL DE MUNICÍPIOS - CNM",
+                "2.112 - PROVENTOS COM INATIVOS E PENSIONISTAS DA PREFEITURA",
+                "2.154 - CONCURSO PÚBLICO / RESTITUIÇÕES DE INSCRIÇÕES",
+                "2.250 - CONVENIO COM O TRIBUNAL DE JUSTIÇA DO ESTADO DE MINAS GERAIS - TJMG",
+                "2.267 - VALORIZAÇÃO DO SERVIDOR PÚBLICO"
+            ]
+        },
+        {
+            "nome": "0040 - CENTRAL DE COMPRAS",
+            "acoes": [
+                "2.107 - MANUTENÇÃO DA CENTRAL DE COMPRAS MUNICIPAL"
+            ]
+        },
+        {
+            "nome": "0044 - INFRAESTRUTURA E URBANIDADE",
+            "acoes": [
+                "2.148 - GESTAO DOS  CEMITÉRIOS MUNICIPAIS"
+            ]
+        },
+        {
+            "nome": "0047 - TECNOLOGIA DA INFORMAÇÃO",
+            "acoes": [
+                "2.266 - MANUTENÇÃO DOS SERVIÇOS DE TECNOLOGIA  E COMUNICAÇÃO"
+            ]
+        },
+        {
+            "nome": "0048 - SEGURANÇA SOCIAL",
+            "acoes": [
+                "2.110 - CONVÊNIO COM A POLÍCIA CIVIL",
+                "2.111 - CONVÊNIO COM A POLÍCIA MILITAR"
+            ]
+        },
+        {
+            "nome": "0052 - CIDADE DIGITAL",
+            "acoes": [
+                "1.016 - CIDADE DIGITAL ",
+                "1119 - Brumas Conectadas: Central Inteligente de Atendimento e Serviços"
+            ]
+        },
+        {
+            "nome": "0071 - INOVAÇÃO EM SERVIÇOS PÚBLICOS",
+            "acoes": [
+                "1133 - Digitalização e Desburocratização dos Processos Administrativos",
+                "1161 - Laboratórios de Inovação Governamental"
+            ]
+        },
+        {
+            "nome": "0073 - PLANEJAMENTO ESTRATÉGICO",
+            "acoes": [
+                "1114 - Brumadinho 2050",
+                "1149 - Gestão de Projetos Estratégicos"
+            ]
+        },
+        {
+            "nome": "0081 - VALORIZAÇÃO DO SERVIÇO PÚBLICO",
+            "acoes": [
+                "1179 - Programa de Excelência e Valorização dos Servidores Públicos",
+                "1180 - Programa de Formação e Oportunidades no Serviço Público"
+            ]
+        }
+    ],
+    "02016 - SECRETARIA MUNICIPAL DE PLANEJAMENTO E COORDENAÇÃO": [
+        {
+            "nome": "0003 - MOBILIDADE URBANA E TRANSITO DE QUALIDADE",
+            "acoes": [
+                "2.228 - PLANEJAMENTO PROJETO E COORDENAÇAO DO TERRITORIO"
+            ]
+        },
+        {
+            "nome": "0055 - HABITAÇÃO",
+            "acoes": [
+                "2.149 - AMPLIAÇÃO E MANUTENÇÃO DA REGULARIZAÇÃO FUNDIÁRIA E DESENVOLVIMENTO SUSTENTÁVEL"
+            ]
+        },
+        {
+            "nome": "0058 - PLANEJAMENTO TERRITORIAL URBANO",
+            "acoes": [
+                "1159 - Integração Regional",
+                "2.115 - MANUTENÇÃO DAS ATIVIDADES DA SECRETARIA DE PLANEJAMENTO E COORDENAÇÃO"
+            ]
+        },
+        {
+            "nome": "0074 - PLANEJAMENTO URBANÍSTICO",
+            "acoes": [
+                "1108 - Acessibilidade",
+                "1169 - Mobilidade Sustentável e Inclusiva",
+                "1183 - Programa de Regularização Fundiária (REURB)",
+                "1198 - Renovação das Leis de Posturas",
+                "1199 - Revisão do Plano Diretor"
+            ]
+        }
+    ],
+    "02017 - SECRETARIA MUNICIPAL DE FAZENDA": [
+        {
+            "nome": "0043 - GESTÃO CONTABIL E FINANCEIRA",
+            "acoes": [
+                "1148 - Gestão da execução contábil, financeira e orçamentária",
+                "2.116 - MANUTENÇÃO DAS ATIVIDADES DA SECRETARIA DE FAZENDA",
+                "2.118 - CONTRIBUIÇÃO AO PASEP",
+                "2.175 - GESTÃO DA EXECUÇÃO CONTÁBIL FINANCEIRA E TRIBUTÁRIA MUNICIPAL"
+            ]
+        },
+        {
+            "nome": "0049 - SERVIÇO DA DÍVIDA CONSOLIDADA",
+            "acoes": [
+                "3.000 - EMPRESTIMO PROGRAMA PRO TRANSPORTE",
+                "3.001 - EMPRÉSTIMO PARA ATERRO SANITÁRIO - CEF"
+            ]
+        },
+        {
+            "nome": "9999 - RESERVA DE CONTINGENCIA",
+            "acoes": [
+                "9.999 - RESERVA DE CONTINGÊNCIA"
+            ]
+        }
+    ],
+    "02019 - SECRETARIA MUNICIPAL DE GOVERNO E REPARAÇÃO": [
+        {
+            "nome": "0002 - REPRESENTAÇÃO POLITICA E SOCIAL DO EXECUTIVO",
+            "acoes": [
+                "1151 - Governança Participativa",
+                "2.103 - CONTRIBUIÇÃO A GRAMBEL",
+                "2.119 - GABINETE E COORDENAÇÃO",
+                "2.120 - COMUNICAÇÃO SOCIAL, RELAÇÕES PÚBLICAS E CERIMONIAL"
+            ]
+        },
+        {
+            "nome": "0005 - DESENVOLVIMENTO DOS SERVIÇOS ADMINISTRATIVOS",
+            "acoes": [
+                "2.022 - PARTICIPAÇÃO DO CONSÓRCIO PÚBLICO PARA O DESENVOLVIMENTO DO ALTO PARAOPEBA - CODAP"
+            ]
+        },
+        {
+            "nome": "0015 - GESTÃO DAS POLÍTICAS PÚBLICAS DE SANEAMENTO",
+            "acoes": [
+                "1.050 - AMPLIAÇÃO E REPARELHAMENTO DA REDE DE ABASTECIMENTO DE ÁGUA E ESGOTO"
+            ]
+        },
+        {
+            "nome": "0044 - INFRAESTRUTURA E URBANIDADE",
+            "acoes": [
+                "1.104 - EXEC. DOS PROJ. E OBRAS ORIUNDOS DO ACOR. JUD. DE REPAR. INTEG.  RELATIVA AO ROMP. DA BARRAGEM VALE"
+            ]
+        },
+        {
+            "nome": "0080 - TRANSPARÊNCIA E CONTROLE SOCIAL",
+            "acoes": [
+                "1173 - Orçamento Participativo Digital"
+            ]
+        }
+    ],
+    "02021 - SECRETARIA MUNICIPAL DE ESPORTES, EVENTOS, JUVENTUDE E LAZER": [
+        {
+            "nome": "0010 - DESENVOLVIMENTO DO ESPORTE E LAZER",
+            "acoes": [
+                "1.023 - DESENVOLVIMENTO DE PROGRAMAS DE INCENTIVO AO ESPORTE",
+                "1.045 - CONSTRUÇÃO AMPLIAÇÃO  DE QUADRAS, CAMPOS DE FUTEBOL E PRAÇAS DE ESPORTES",
+                "1.046 - AQUISIÇÃO DE EQUIPAMENTOS PARA DESENVOLVIMENTO DO ESPORTE E LAZER",
+                "2.085 - MANUTENÇÃO DE CAMPOS DE FUTEBOL, QUADRAS E PRAÇAS DE ESPORTES",
+                "2.132 - CONVÊNIO COM A LIGA MUNICIPAL DE DESPORTOS DE BRUMADINHO",
+                "2.134 - MANUTENÇÃO DE TRANSPORTE NA ÁREA ESPORTE LAZER E EVENTOS",
+                "2.135 - MANUTENÇÃO DA SECRETARIA MUNICIPAL DE ESPORTE, LAZER E EVENTOS",
+                "2.164 - PROMOÇÃO DE EVENTOS ESPORTIVOS, ARTÍSTICOS E CULTURAIS"
+            ]
+        },
+        {
+            "nome": "0065 - ESTRUTURAÇÃO DO ESPORTE NO MUNICÍPIO",
+            "acoes": [
+                "1144 - Fomentar as atividades esportivas para o recebimento do incentivo do ICMS esportivo",
+                "1204 - Trilhas de Brumadin"
+            ]
+        },
+        {
+            "nome": "0066 - CIDADE ATIVA!",
+            "acoes": [
+                "1118 - BrumaExtreme",
+                "1176 - Pista do Grau"
+            ]
+        }
+    ],
+    "02022 - SECRETARIA MUNICIPAL DE CULTURA E TURISMO": [
+        {
+            "nome": "0011 - GESTÃO DAS POLÍTICAS DE TURISMO, CULTURA E IGUALDADE RACIAL",
+            "acoes": [
+                "1.041 - REFORMA, AMPLIAÇÃO E CONSTRUÇÃO DE ESPAÇOS TURÍSTICOS E CULTURAIS",
+                "2.137 - MANUTENÇÃO DA SECRETARIA MUNICIPAL DE TURISMO E CULTURA",
+                "2.195 - FOMENTO E COLABORAÇÃO À ORGANIZAÇÕES SOCIAIS",
+                "2.240 - MANUTENÇÃO DA CASA DA CULTURA CARMITA PASSOS",
+                "2.241 - MANUTENÇÃO DO ARQUIVO PUBLICO DE BRUMADINHO",
+                "2.242 - EXECUÇÃO E MANUTENÇÃO DE ATIVIDADES CULTURAIS TURISTICAS E PATRIMONIAIS",
+                "2.243 - PROMOÇÃO DE EVENTOS  ARTÍSTICOS E CULTURAIS"
+            ]
+        },
+        {
+            "nome": "0036 - MANUTENÇÃO VALORIZAÇÃO E UNIVERSALIZAÇÃO DA CULTURA",
+            "acoes": [
+                "1.088 - AMPLIAÇÃO E MODERNIZAÇÃO DA INFRAESTRUTURA DE ESPAÇOS CULTURAIS",
+                "1.105 - FOMENTO A PROJETOS DE INCENTIVO E PROMOÇÃO À CULTURA - POLITICA NACIONAL ALDIR BLANC",
+                "1124 - Combate ao Preconceito e à Discriminação Racial",
+                "2.198 - FOMENTO E COLABORAÇÃO A ORGANIZAÇÕES SOCIAIS DE PROMOÇÃO CULTURAL",
+                "2.199 - MANUTENÇÃO DOS CENTROS CULTURAIS "
+            ]
+        },
+        {
+            "nome": "0037 - GESTÃO, PRESERVAÇÃO, SALVAGUARDA E FOMENTO DO PATRIMÔNIO CULTURAL",
+            "acoes": [
+                "1.085 - CONSERVAÇÃO E RESTAURAÇÃO DO PATRIMÔNIO CULTURAL",
+                "1121 - Brumas é História",
+                "2.039 - MANUTENÇÃO DOS CENTROS CULTURAIS ",
+                "2.076 - CAPACITAÇÃO E QUALIFICAÇÃO DOS PROFISSIONAIS E GESTORES DO PATRIMONIO HISTÓRICO",
+                "2.146 - FOMENTO E COLABORAÇÃO AS ATIVIDADES CULTURAIS, TURISTICAS E PATRIMONIAIS"
+            ]
+        },
+        {
+            "nome": "0038 - DESENVOLVIMENTO DO TURISMO",
+            "acoes": [
+                "2.060 - PROGRAMA DE QUALIFICAÇÃO, PROMOÇÃO E ORDENAMENTO DO TURISMO"
+            ]
+        },
+        {
+            "nome": "0063 - SERVIÇO LEGAL- TURISMO SEGURO",
+            "acoes": [
+                "2.080 - IMPLANTAÇÃO, MANUTENÇÃO E ATUALIZAÇÃO DOS SERVIÇOS GRÁFICOS PROMOCIONAIS E OUTRAS MIDIAS",
+                "2.143 - QUALIFIQUIÇÃO,  ESTRUTURAÇÃO, REVITALIZAÇÃO E MANUTENÇÃO DOS ATRATIVOS TURÍSTICOS"
+            ]
+        },
+        {
+            "nome": "0064 - DESENVOLVIMENTO DO TURISMO DE BASE COMUNITÁRIA E PRODUÇÃO ASSOCIADA",
+            "acoes": [
+                "1117 - Brumadinho Pró-Turismo",
+                "1123 - Circuito Cultural e Gastronômico de Brumadinho",
+                "2.193 - MANUTENÇÃO DAS ATIVIDADES DO TURISMO DE BASE COMUNITÁRIA E PRODUÇÃO ASSOCIATIVA"
+            ]
+        },
+        {
+            "nome": "0068 - GESTÃO DA POLÍTICA DE PROMOÇÃO DA IGUALDADE RACIAL",
+            "acoes": [
+                "2.071 - PROMOÇÃO DE EVENTOS DE AÇÕES AFIRMATIVAS À POPULAÇÃO NEGRA E ÀS ETNIAS ESPECÍFICAS",
+                "2.196 - COORDENADORIA DE PROMOÇÃO DA IGUALDADE RACIAL",
+                "2.197 - FOMENTO E COLABORAÇÃO A ORGANIZAÇÕES SOCIAIS DE PROMOÇÃO A IGUALDADE RACIAL"
+            ]
+        }
+    ],
+    "02023 - SECRETARIA MUNICIPAL DE OBRAS E SERVIÇOS PÚBLICOS": [
+        {
+            "nome": "0003 - MOBILIDADE URBANA E TRANSITO DE QUALIDADE",
+            "acoes": [
+                "1.066 - CONSTRUÇÃO E AMPLIAÇÃO DO SISTEMA VIÁRIO",
+                "1.067 - CONSTRUÇÃO DE PONTES E PASSARELAS",
+                "2.138 - MANUTENÇÃO DA PAVIMENTAÇÃO URBANA"
+            ]
+        },
+        {
+            "nome": "0014 - GESTÃO DE RESÍDUOS",
+            "acoes": [
+                "1165 - Melhoria do Aterro Sanitário e Gestão de Resíduos",
+                "1196 - Reciclagem de Sobras de Material de Construção"
+            ]
+        },
+        {
+            "nome": "0015 - GESTÃO DAS POLÍTICAS PÚBLICAS DE SANEAMENTO",
+            "acoes": [
+                "1.050 - AMPLIAÇÃO E REPARELHAMENTO DA REDE DE ABASTECIMENTO DE ÁGUA E ESGOTO",
+                "1.051 - CONSTRUÇÃO DE SISTEMA DE DRENAGEM URBANA",
+                "1.057 - OBRAS DE SANEAMENTO BÁSICO E DE REDES DE ESGOTOS",
+                "1.064 - CONSTRUÇÃO DE POÇOS ARTESIANOS",
+                "1.106 - EXECUÇÃO DE OBRA NA COMUNIDADE DE PONTE DAS ALMORREIMAS"
+            ]
+        },
+        {
+            "nome": "0044 - INFRAESTRUTURA E URBANIDADE",
+            "acoes": [
+                "1.026 - CONSTRUÇÃO DE PASSEIOS E MEIOS FIOS ",
+                "1.060 - CONSTRUÇÃO DE PRÉDIOS PÚBLICOS",
+                "1.061 - CONSTRUÇÃO DE ABRIGOS EM PONTOS DE ÔNIBUS",
+                "1.062 - CONSTRUÇÃO E AMPLIAÇÃO DE VELÓRIOS MUNICIPAIS",
+                "1.068 - EQUIPAMENTOS PARA A SECRETARIA MUNCIPAL DE OBRAS E SERVIÇOS PÚBLICOS",
+                "1162 - Limpeza Urbana",
+                "1167 - Melhoria dos Acessos à Cidade",
+                "2.000 - MANUTENÇÃO DOS SERVIÇOS DE SANEAMENTO BÁSICO E DE REDE DE ESGOTO",
+                "2.053 - MANUTENÇÃO DOS SERVIÇOS DE LIMPEZA PÚBLICA",
+                "2.055 - AQUISIÇÃO DE IMÓVEIS PARA UTILIDADE PÚBLICA - DESAPROPRIAÇÃO",
+                "2.139 - MANUTENÇÃO DA SECRETARIA MUNICIPAL DE OBRAS E SERVIÇOS PÚBLICOS",
+                "2.141 - MANUTENÇÃO DOS SERVICOS PÚBLICOS",
+                "2.150 - MANUTENÇÃO REFORMA E AMPLIAÇÃO DE PREDIOS PROPRIOS E ALUGADOS"
+            ]
+        }
+    ],
+    "02024 - SECRETARIA MUNICIPAL DE DESENVOLVIMENTO ECONOMICO": [
+        {
+            "nome": "0051 - CIDADE EMPREENDEDORA",
+            "acoes": [
+                "1132 - Desburocratização",
+                "1141 - Facilitação do Acesso a Crédito",
+                "1142 - Faculdade de Tecnologia",
+                "1156 - Inclusão de Pessoas com Deficiência",
+                "1168 - Mercado Municipal",
+                "1171 - Mulher Empreendedora",
+                "1190 - Programas de Apoio a Empreendedores",
+                "2.261 - PROGRAMAS DE APOIO A EMPREENDEDORES - HUB TECNOLÓGICO DE BRUMADINHO - MERCADO MUNICIPAL"
+            ]
+        },
+        {
+            "nome": "0054 - DESENVOLVIMENTO ECONÔMICO – CONSTRUINDO O FUTURO",
+            "acoes": [
+                "2.231 - MANUTENÇÃO DAS ATIVIDADES DA SECRETARIA DE DESENVOLVIMENTO ECONOMICO"
+            ]
+        },
+        {
+            "nome": "0056 - BRUMADINHO PARA O MUNDO",
+            "acoes": [
+                "1116 - Brumadinho para o Mundo",
+                "1153 - Hub Tecnológico de Brumadinho",
+                "2.263 - BRUMADINHO PARA O MUNDO "
+            ]
+        },
+        {
+            "nome": "0079 - FACULDADE DE TECNOLOGIA",
+            "acoes": [
+                "2.265 - PROGRAMA DE FORMAÇÃO DE DESENVOLVEDORES DE SOFTWARE"
+            ]
+        },
+        {
+            "nome": "0090 - ESTRUTURAÇÃO PRODUTIVA",
+            "acoes": [
+                "1112 - Aprimoramento das Áreas Industriais e Comerciais",
+                "1134 - Edital Transparente na Distribuição dos Loteamentos do Distrito Industrial",
+                "1146 - Fortalecimento do Fundo Municipal de Desenvolvimento Econômico",
+                "1155 - Incentivos Fiscais para Novas Empresas",
+                "1157 - Incorporação de Economia Circular",
+                "2.262 - INCENTIVOS AO DESENVOLVIMENTO ECONÔMICO E A ECONOMIA CIRCULAR "
+            ]
+        }
+    ],
+    "02025 - SECRETARIA MUNICIPAL DE AGRICULTURA PECUARIA E ABASTECIMENTO": [
+        {
+            "nome": "0005 - DESENVOLVIMENTO DOS SERVIÇOS ADMINISTRATIVOS",
+            "acoes": [
+                "2.246 - MANUTENÇÃO DAS ATIVIDADES DA SECRETARIA DE AGRICULTURA PECUARIA E ABASTECIMENTO"
+            ]
+        },
+        {
+            "nome": "0016 - ADMINISTRAÇÃO DA SECRETARIA DE AGRICULTURA PECUARIA E ABASTECIMENTO",
+            "acoes": [
+                "2.124 - CONVÊNIO COM IMA - INSTITUTO MINEIRO DE AGROPECUÁRIA"
+            ]
+        },
+        {
+            "nome": "0026 - APOIO A COMERCIALIZAÇÃO",
+            "acoes": [
+                "1125 - Compras públicas da agricultura familiar",
+                "1129 - Criação de Selo Orgânico Municipal e Conscientização Sustentável",
+                "1143 - Feira Livre para Produtores"
+            ]
+        },
+        {
+            "nome": "0039 - SERVIÇO DE INSPEÇÃO MUNICIPAL - SIM",
+            "acoes": [
+                "2.142 - SERVIÇO DE INSPEÇÃO MUNICIPAL - SIM"
+            ]
+        },
+        {
+            "nome": "0041 - FORTALECIMENTO DOS SETORES RURAIS",
+            "acoes": [
+                "2.122 - PROGRAMA DE APOIO AO PEQUENO/MÉDIO PRODUTOR RURAL",
+                "2.125 - CONVÊNIO COM A EMATER",
+                "2.126 - CONVÊNIO DE COOPERAÇÃO COM O INCRA",
+                "2.127 - PROMOÇÃO DE EXPOSIÇÃO AGROPECUÁRIA E RODEIOS",
+                "2.216 - AQUISIÇAO DE PRODUTOS DA AGRICULTURA FAMILIAR COM DOAÇAO SIMULTANEA"
+            ]
+        },
+        {
+            "nome": "0083 - APOIO A PRODUÇÃO",
+            "acoes": [
+                "1126 - Cooperativas do Leite e da Mexerica",
+                "1145 - Fomento à Qualidade dos Produtos Locais",
+                "1152 - Horta Orgânica Solidária",
+                "1175 - Piscicultura"
+            ]
+        }
+    ],
+    "02026 - BRUMADINHO ATIVOS S/A": [
+        {
+            "nome": "0044 - INFRAESTRUTURA E URBANIDADE",
+            "acoes": [
+                "1.065 - CONSTRUÇÃO E AMPLIAÇÃO DA REDE DE ILUMINAÇÃO PÚBLICA",
+                "1.102 - MODERNIZAÇÃO E DESENVOLVIMENTO TECNOLOGICO DE EQUIPAMENTOS E ESTRUTURAS PUBLICAS",
+                "1174 - Parcerias Público Privadas",
+                "1197 - Rede de Internet de Alta Velocidade",
+                "2.140 - MANUTENÇÃO DA REDE DE ILUMINAÇÃO PÚBLICA",
+                "2.248 - MANUTENÇÃO DAS ATIVIDADES ADMINISTRATIVAS DA EPBA",
+                "2.249 - MANUTENÇÃO DAS USINAS FOTOVOLTAICAS"
+            ]
+        },
+        {
+            "nome": "0050 - BRUMADINHO ILUMINADA",
+            "acoes": [
+                "1115 - Brumadinho Iluminada e Segura",
+                "1164 - Melhoria da Rede de Energia"
+            ]
+        }
+    ],
+    "02027 - SECRETARIA MUNICIPAL DE SEGURANÇA PÚBLICA MOBILIDADE E DEFESA CIVIL": [
+        {
+            "nome": "0003 - MOBILIDADE URBANA E TRANSITO DE QUALIDADE",
+            "acoes": [
+                "1128 - Criação de Rota de Ônibus na Zona Rural",
+                "1166 - Melhoria do Transporte Público",
+                "1172 - Municipalização da fiscalização de trânsito",
+                "1182 - Programa de Mobilidade Urbana de Brumadinho",
+                "2.214 - SISTEMA DE TRANSPORTE, TRANSITO E CIRCULAÇÃO DO MUNICIPIO",
+                "2.229 - SERVIÇO DE TRANSPORTE E TRANSITO DE BRUMADINHO - SETRANSB",
+                "2.230 - CONSELHO MUNICIPAL DE TRANSPORTE  TRANSITO E TRÁFEGO"
+            ]
+        },
+        {
+            "nome": "0045 - DEFESA CIVIL",
+            "acoes": [
+                "2.158 - COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL - COMPDEC",
+                "2.213 - CONSELHO MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL - COMUPDEC"
+            ]
+        },
+        {
+            "nome": "0048 - SEGURANÇA SOCIAL",
+            "acoes": [
+                "2.191 - MANUTENÇÃO DE SISTEMA DE VÍDEO E MONITORAMENTO DE VIAS",
+                "2.259 - MANUTENÇÃO DA SECRETARIA MUNICIPAL DE SEGURANÇA PÚBLICA MOBILIDADE E DEFESA CIVIL",
+                "1201 - Segurança Comunitária Participativa",
+                "1202 - Segurança Pública Integrada e Monitoramento Eletrônico"
+            ]
+        },
+        {
+            "nome": "0069 - FORTALECIMENTO INSTITUCIONAL",
+            "acoes": [
+                "1158 - Instituto de apoio à Defesa Civil"
+            ]
+        },
+        {
+            "nome": "0072 - SEGURANÇA PÚBLICA INTEGRADA",
+            "acoes": [
+                "1127 - Criação da Guarda Municipal",
+                "1178 - Política Municipal de Enfrentamento à Violência Doméstica"
+            ]
+        }
+    ]
+};
+
+
+
+        // Estado do formulário
+        let currentPrograms = [];
+        let currentTab = 0;
+        let totalTabs = 1;
+
+        // Detectar mudança de órgão
+        document.getElementById('orgao').addEventListener('change', function() {
+            const orgao = this.value;
+            if (orgao) {
+                // Resetar para a primeira aba ao mudar o órgão
+                currentTab = 0;
+                loadPrograms(orgao);
+            } else {
+                clearPrograms();
+            }
+        });
+
+        // Navegação do primeiro "Próximo"
+        document.getElementById('firstNext').addEventListener('click', function() {
+            if (validateCurrentTab()) {
+                nextTab();
+            }
+        });
+
+        // Carregar programas do órgão selecionado
+        function loadPrograms(orgao) {
+            const programs = programasData[orgao] || [];
+            currentPrograms = programs;
+            
+            const container = document.getElementById('programTabs');
+            container.innerHTML = '';
+
+            programs.forEach((program, index) => {
+                const tabNumber = index + 1; // Aba 0 é identificação
+                const sectionNumber = index + 2;
+                const tabHTML = createProgramTab(program, sectionNumber, tabNumber);
+                container.innerHTML += tabHTML;
+            });
+
+            // Atualizar total de abas
+            totalTabs = programs.length + 1; // +1 pela aba de identificação
+            updateProgressInfo();
+            
+            // Adicionar event listeners aos botões de navegação
+            attachNavigationListeners();
+        }
+
+        // Limpar seções de programas
+        function clearPrograms() {
+            document.getElementById('programTabs').innerHTML = '';
+            currentPrograms = [];
+            currentTab = 0;
+            totalTabs = 1;
+            updateProgressInfo();
+        }
+
+        // Criar aba de programa
+        function createProgramTab(program, sectionNumber, tabNumber) {
+            const acoesText = program.acoes.join(', ');
+            const isLastTab = tabNumber === currentPrograms.length;
+            
+            return `
+                <div class="tab-content" data-tab="${tabNumber}">
+                    <div class="section">
+                        <h2 class="section-title">
+                            <span class="section-number">${sectionNumber}</span>
+                            ${program.nome}
+                        </h2>
+                        
+                        <div class="section-description">
+                            <strong>Ações vinculadas a este programa:</strong>
+                            ${acoesText}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="planejamento_${sectionNumber}">
+                                Descreva o planejamento para este programa no ano corrente
+                                <span class="required">*</span>
+                            </label>
+                            <textarea 
+                                id="planejamento_${sectionNumber}" 
+                                name="planejamento_${sectionNumber}"
+                                data-program="${program.nome}"
+                                required
+                                placeholder="Utilize este espaço para explicar o conjunto de entregas, prioridades e resultados esperados..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="entrega_${sectionNumber}">
+                                Qual é a principal entrega desse programa?
+                            </label>
+                            <input 
+                                type="text" 
+                                id="entrega_${sectionNumber}" 
+                                name="entrega_${sectionNumber}"
+                                data-program="${program.nome}"
+                                placeholder="Ex: Reforma de 5 escolas municipais">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prazo_${sectionNumber}">
+                                Prazo final da principal entrega deste programa
+                                <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="date" 
+                                id="prazo_${sectionNumber}" 
+                                name="prazo_${sectionNumber}"
+                                data-program="${program.nome}"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn-nav btn-prev">
+                            ← Anterior
+                        </button>
+                        ${isLastTab ? 
+                            '<button type="button" class="btn-nav" onclick="baixarPDF()" style="background: var(--accent); margin-right: 10px;">📄 Baixar PDF</button><button type="submit" class="btn-submit" id="submitBtn">Enviar Planejamento</button>' :
+                            '<button type="button" class="btn-nav btn-next">Próximo →</button>'
+                        }
+                    </div>
+                </div>
+            `;
+        }
+
+        // Adicionar event listeners aos botões de navegação
+        function attachNavigationListeners() {
+            document.querySelectorAll('.btn-prev').forEach(btn => {
+                btn.addEventListener('click', prevTab);
+            });
+
+            document.querySelectorAll('.btn-next').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (validateCurrentTab()) {
+                        nextTab();
+                    }
+                });
+            });
+        }
+
+        // Validar aba atual
+        function validateCurrentTab() {
+            const currentTabElement = document.querySelector(`.tab-content[data-tab="${currentTab}"]`);
+            if (!currentTabElement) return false;
+
+            const requiredFields = currentTabElement.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.focus();
+                    showAlert('error', 'Por favor, preencha todos os campos obrigatórios antes de continuar.');
+                    isValid = false;
+                    return;
+                }
+            });
+
+            return isValid;
+        }
+
+        // Próxima aba
+        function nextTab() {
+            if (currentTab < totalTabs - 1) {
+                currentTab++;
+                showTab(currentTab);
+            }
+        }
+
+        // Aba anterior
+        function prevTab() {
+            if (currentTab > 0) {
+                currentTab--;
+                showTab(currentTab);
+            }
+        }
+
+        // Mostrar aba específica
+        function showTab(tabIndex) {
+            // Esconder todas as abas
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Mostrar aba atual
+            const tabToShow = document.querySelector(`.tab-content[data-tab="${tabIndex}"]`);
+            if (tabToShow) {
+                tabToShow.classList.add('active');
+                updateProgressInfo();
+                
+                // Controlar visibilidade do texto introdutório e instruções
+                const introText = document.getElementById('introText');
+                const infoBox = document.getElementById('infoBox');
+                
+                if (tabIndex === 0) {
+                    // Aba de identificação - mostrar texto e instruções
+                    introText.style.display = 'block';
+                    infoBox.style.display = 'block';
+                } else {
+                    // Abas de programas - esconder texto e instruções
+                    introText.style.display = 'none';
+                    infoBox.style.display = 'none';
+                }
+                
+                // Scroll para o topo
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Atualizar informações de progresso
+        function updateProgressInfo() {
+            const currentStepNum = document.getElementById('currentStepNum');
+            const totalStepsEl = document.getElementById('totalSteps');
+            const stepTitle = document.getElementById('stepTitle');
+            const progressFill = document.getElementById('progressFill');
+
+            currentStepNum.textContent = currentTab + 1;
+            totalStepsEl.textContent = totalTabs;
+
+            // Atualizar título da etapa
+            if (currentTab === 0) {
+                stepTitle.textContent = 'Identificação';
+            } else {
+                const programIndex = currentTab - 1;
+                if (currentPrograms[programIndex]) {
+                    stepTitle.textContent = currentPrograms[programIndex].nome;
+                }
+            }
+
+            // Atualizar barra de progresso
+            const progress = ((currentTab + 1) / totalTabs) * 100;
+            progressFill.style.width = progress + '%';
+        }
+
+        // Submissão do formulário
+        document.getElementById('mainForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!validateCurrentTab()) {
+                return;
+            }
+
+            const loading = document.getElementById('loading');
+            const alert = document.getElementById('alert');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Desabilitar botão e mostrar loading
+            if (submitBtn) submitBtn.disabled = true;
+            loading.classList.add('show');
+            alert.classList.remove('show');
+
+            // Coletar dados do formulário
+            const formData = collectFormData();
+            
+            try {
+                // CONFIGURAÇÃO - Email do gestor (você)
+                const EMAIL_GESTOR = 'victor@vpgovernanca.com.br';
+                const GOOGLE_SCRIPT_URL = 'SUA_URL_DO_GOOGLE_APPS_SCRIPT_AQUI';
+                
+                // Email de quem preencheu o formulário
+                const emailResponsavel = formData.email;
+                
+                // Tentar enviar para Google Sheets primeiro (se configurado)
+                let googleSheetsSent = false;
+                if (GOOGLE_SCRIPT_URL !== 'SUA_URL_DO_GOOGLE_APPS_SCRIPT_AQUI') {
+                    try {
+                        await fetch(GOOGLE_SCRIPT_URL, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(formData)
+                        });
+                        googleSheetsSent = true;
+                    } catch (err) {
+                        console.warn('Google Sheets falhou, usando email como fallback:', err);
+                    }
+                }
+                
+                // ENVIAR EMAIL APENAS PARA VICTOR
+                await enviarPorEmail(formData);
+                
+                // BAIXAR PDF AUTOMATICAMENTE APÓS ENVIO
+                gerarPDF(formData);
+                
+                // Mostrar mensagem de sucesso
+                showAlert('success', '✅ Planejamento enviado com sucesso! O PDF foi baixado automaticamente.');
+                
+                // Resetar formulário após 3 segundos
+                setTimeout(() => {
+                    document.getElementById('mainForm').reset();
+                    clearPrograms();
+                    currentTab = 0;
+                    showTab(0);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 3000);
+
+            } catch (error) {
+                console.error('Erro:', error);
+                showAlert('error', 'Erro ao enviar os dados. Por favor, tente novamente ou entre em contato com o suporte.');
+            } finally {
+                if (submitBtn) submitBtn.disabled = false;
+                loading.classList.remove('show');
+            }
+        });
+
+        // Função para enviar por email usando EmailJS
+        // Função para gerar PDF (usada tanto pelo botão quanto após envio)
+        function gerarPDF(formData) {
+            // Criar PDF usando jsPDF
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            let y = 20; // Posição Y inicial
+            
+            // Título
+            doc.setFontSize(18);
+            doc.setTextColor(45, 155, 155); // Cor turquesa
+            doc.text('Planejamento da Gestão', 105, y, { align: 'center' });
+            y += 8;
+            
+            doc.setFontSize(12);
+            doc.setTextColor(100, 100, 100);
+            doc.text('Brumas do Amanhã | 2025-2028', 105, y, { align: 'center' });
+            y += 15;
+            
+            // Dados do responsável
+            doc.setFontSize(14);
+            doc.setTextColor(45, 155, 155);
+            doc.text('Dados do Responsável', 20, y);
+            y += 8;
+            
+            doc.setFontSize(10);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Órgão: ${formData.orgao}`, 20, y);
+            y += 6;
+            doc.text(`Responsável: ${formData.responsavel}`, 20, y);
+            y += 6;
+            doc.text(`Email: ${formData.email}`, 20, y);
+            y += 6;
+            doc.text(`Data: ${formatarDataHora(formData.timestamp)}`, 20, y);
+            y += 12;
+            
+            // Programas
+            doc.setFontSize(14);
+            doc.setTextColor(45, 155, 155);
+            doc.text('Programas Planejados', 20, y);
+            y += 10;
+            
+            formData.programas.forEach((programa, index) => {
+                // Verificar se precisa de nova página
+                if (y > 250) {
+                    doc.addPage();
+                    y = 20;
+                }
+                
+                // Número e nome do programa
+                doc.setFontSize(12);
+                doc.setTextColor(45, 155, 155);
+                doc.text(`${index + 1}. ${programa.nome}`, 20, y);
+                y += 8;
+                
+                doc.setFontSize(10);
+                doc.setTextColor(0, 0, 0);
+                
+                // Planejamento
+                doc.setFont(undefined, 'bold');
+                doc.text('Planejamento:', 20, y);
+                y += 6;
+                doc.setFont(undefined, 'normal');
+                
+                const planejamentoLines = doc.splitTextToSize(programa.planejamento, 170);
+                planejamentoLines.forEach(line => {
+                    if (y > 280) {
+                        doc.addPage();
+                        y = 20;
+                    }
+                    doc.text(line, 20, y);
+                    y += 5;
+                });
+                y += 3;
+                
+                // Principal Entrega
+                doc.setFont(undefined, 'bold');
+                doc.text('Principal Entrega:', 20, y);
+                y += 6;
+                doc.setFont(undefined, 'normal');
+                doc.text(programa.entrega_principal || 'Não informado', 20, y);
+                y += 8;
+                
+                // Prazo
+                doc.setFont(undefined, 'bold');
+                doc.text('Prazo:', 20, y);
+                y += 6;
+                doc.setFont(undefined, 'normal');
+                doc.text(formatarData(programa.prazo), 20, y);
+                y += 12;
+                
+                // Linha separadora
+                if (index < formData.programas.length - 1) {
+                    doc.setDrawColor(200, 200, 200);
+                    doc.line(20, y, 190, y);
+                    y += 10;
+                }
+            });
+            
+            // Rodapé na última página
+            const pageCount = doc.internal.getNumberOfPages();
+            for (let i = 1; i <= pageCount; i++) {
+                doc.setPage(i);
+                doc.setFontSize(8);
+                doc.setTextColor(150, 150, 150);
+                doc.text('Prefeitura Municipal de Brumadinho', 105, 285, { align: 'center' });
+                doc.text(`Página ${i} de ${pageCount}`, 105, 290, { align: 'center' });
+            }
+            
+            // Baixar PDF
+            const nomeArquivo = `Planejamento_${formData.orgao.substring(0, 5)}_${new Date().getTime()}.pdf`;
+            doc.save(nomeArquivo);
+        }
+
+        // Função para baixar PDF (botão manual)
+        function baixarPDF() {
+            // Validar se o formulário está preenchido
+            if (!validateCurrentTab()) {
+                showAlert('error', 'Por favor, preencha todos os campos obrigatórios antes de baixar o PDF.');
+                return;
+            }
+
+            // Coletar dados
+            const formData = collectFormData();
+            
+            // Gerar e baixar PDF
+            gerarPDF(formData);
+            
+            showAlert('success', '✅ PDF baixado com sucesso!');
+        }
+
+        async function enviarPorEmail(dados) {
+            // Formatar dados para o email
+            let programasHTML = '';
+            dados.programas.forEach((programa, index) => {
+                programasHTML += `
+                    <div style="margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #2d9b9b;">
+                        <h3 style="color: #2d9b9b; margin-bottom: 15px;">${index + 1}. ${programa.nome}</h3>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: #1b7a7a;">Planejamento:</strong>
+                            <p style="margin: 5px 0; line-height: 1.6;">${programa.planejamento}</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: #1b7a7a;">Principal Entrega:</strong>
+                            <p style="margin: 5px 0;">${programa.entrega_principal || 'Não informado'}</p>
+                        </div>
+                        
+                        <div>
+                            <strong style="color: #1b7a7a;">Prazo:</strong>
+                            <p style="margin: 5px 0;">${formatarData(programa.prazo)}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // EMAIL PARA O GESTOR (Victor) - HTML COMPLETO
+            const emailGestorHTML = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px;">
+    <div style="background: linear-gradient(135deg, #2d9b9b 0%, #1b7a7a 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
+        <h1 style="margin: 0; font-size: 28px;">Planejamento da Gestão</h1>
+        <p style="margin: 10px 0 0 0; opacity: 0.9;">Brumas do Amanhã | 2025-2028</p>
+    </div>
+    
+    <div style="background: white; padding: 30px; border: 1px solid #ddd; border-top: none; border-radius: 0 0 8px 8px;">
+        <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin-bottom: 30px; border-left: 4px solid #ffc107;">
+            <h2 style="margin: 0 0 15px 0; color: #856404; font-size: 20px;">📋 Novo Planejamento Recebido</h2>
+            <p style="margin: 5px 0;"><strong>Órgão:</strong> ${dados.orgao}</p>
+            <p style="margin: 5px 0;"><strong>Responsável:</strong> ${dados.responsavel}</p>
+            <p style="margin: 5px 0;"><strong>Email:</strong> ${dados.email}</p>
+            <p style="margin: 5px 0;"><strong>Data/Hora:</strong> ${formatarDataHora(dados.timestamp)}</p>
+        </div>
+        
+        <h2 style="color: #2d9b9b; margin: 30px 0 20px 0; font-size: 24px;">Programas Planejados</h2>
+        ${programasHTML}
+        
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #ddd; text-align: center; color: #777;">
+            <p style="margin: 5px 0; font-size: 14px;">Planejamento da Gestão - Brumas do Amanhã</p>
+            <p style="margin: 5px 0; font-size: 14px;">Prefeitura Municipal de Brumadinho</p>
+        </div>
+    </div>
+</body>
+</html>`;
+
+            // Enviar para VICTOR usando FormSubmit
+            await fetch('https://formsubmit.co/ajax/victor@vpgovernanca.com.br', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: `NOVO PLANEJAMENTO - ${dados.orgao}`,
+                    _template: 'box',
+                    _captcha: 'false',
+                    orgao: dados.orgao,
+                    responsavel: dados.responsavel,
+                    email: dados.email,
+                    message: emailGestorHTML
+                })
+            });
+        }
+
+        // Função auxiliar para formatar data
+        function formatarData(dataISO) {
+            if (!dataISO) return 'Não informado';
+            const data = new Date(dataISO + 'T00:00:00');
+            return data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        }
+
+        // Função auxiliar para formatar data e hora
+        function formatarDataHora(timestamp) {
+            const data = new Date(timestamp);
+            return data.toLocaleString('pt-BR', { 
+                day: '2-digit', 
+                month: '2-digit', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Coletar dados do formulário
+        function collectFormData() {
+            const data = {
+                timestamp: new Date().toISOString(),
+                orgao: document.getElementById('orgao').value,
+                responsavel: document.getElementById('responsavel').value,
+                email: document.getElementById('email').value,
+                programas: []
+            };
+
+            // Coletar dados de cada programa
+            currentPrograms.forEach((program, index) => {
+                const sectionNumber = index + 2;
+                const programData = {
+                    nome: program.nome,
+                    planejamento: document.getElementById(`planejamento_${sectionNumber}`).value,
+                    entrega_principal: document.getElementById(`entrega_${sectionNumber}`).value,
+                    prazo: document.getElementById(`prazo_${sectionNumber}`).value
+                };
+
+                data.programas.push(programData);
+            });
+
+            return data;
+        }
+
+        // Mostrar alerta
+        function showAlert(type, message) {
+            const alert = document.getElementById('alert');
+            alert.className = `alert ${type} show`;
+            alert.textContent = message;
+            
+            // Scroll para o alerta
+            alert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
